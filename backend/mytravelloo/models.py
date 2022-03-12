@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
@@ -20,13 +21,18 @@ class User(AbstractUser):
 
 
 class Customer(User):
-    pass
+    class Meta:
+        # add verbose_name ( which name show in admin pannel )
+        verbose_name = "Customer"
 
 
 class Agent(User):
     company_name = models.CharField(
         max_length=150, default="", null=False, blank=False)
     company_desc = models.CharField(max_length=1000, default="")
+    class Meta:
+        # add verbose_name ( which name show in admin pannel )
+        verbose_name = "Agent"
 
 
 class Destination(models.Model):
