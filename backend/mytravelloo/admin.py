@@ -3,13 +3,17 @@ from django.contrib.auth.admin import UserAdmin
 from .models import Customer, User, Agent, Destination, Trip, Payment
 
 
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'email']
+    
 @admin.register(Customer)
-class CustomerAdmin(UserAdmin):
+class CustomerAdmin(admin.ModelAdmin):
     list_display = ['username', 'email']
 
 
 @admin.register(Agent)
-class AgentAdmin(UserAdmin):
+class AgentAdmin(admin.ModelAdmin):
     list_display = ['username', 'email', 'company_name']
 
 
@@ -28,4 +32,3 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = ['card_no', 'cvv_no', 'expiry_date', 'name']
 
 
-admin.site.register(User, UserAdmin)

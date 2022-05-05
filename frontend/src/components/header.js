@@ -9,9 +9,6 @@ const Header = () => {
 
     useEffect(() => {
         document.body.classList.toggle("active", themeActive);
-        return () => {
-            document.body.classList.remove("active");
-        };
     }, [themeActive]);
 
     useEffect(() => {
@@ -53,9 +50,15 @@ const Header = () => {
                         <li>
                             <a href="#packages">Packages</a>
                         </li>
-                        <li>
-                            <Link to="/get-trips">My Trips</Link>
-                        </li>
+
+                        {authState.isAuth ? (
+                            <li>
+                                <Link to="/get-trips">My Trips</Link>
+                            </li>
+                        ):(<></>)
+                        }
+
+
                         <li>
                             <a href="#services">Services</a>
                         </li>

@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import axios from "axios";
 
 export const AppContext = React.createContext();
-const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+// const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+const baseURL = "http://127.0.0.1:8000/api/";
 
 const initialState = {
     isAuth: false,
@@ -70,6 +71,7 @@ export const Auth = ({ children }) => {
         const token = JSON.parse(localStorage.getItem("token") || null);
 
         if (token) {
+            console.log("hello");
             axios
                 .post(baseURL + "check-token/", {
                     token: token,

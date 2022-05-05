@@ -4,8 +4,15 @@ import { ReactComponent as CampImage } from "../images/camping.svg";
 const Services = () => {
     return (
         <section className="services" id="services">
-            <h1 className="heading">
-                Our <span>Services</span>
+            <h1 class="top-heading"> 
+                <span> S </span>
+                <span> E </span> 
+                <span> R </span>
+                <span> V </span>
+                <span> I </span>
+                <span> C </span>
+                <span> E </span>
+                <span> S </span>
             </h1>
 
             <div className="box-container">

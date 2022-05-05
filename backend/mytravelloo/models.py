@@ -36,6 +36,7 @@ class Agent(User):
 
 
 class Destination(models.Model):
+    # name means destination name
     name = models.CharField(max_length=150, null=False,
                             blank=False, default="")
     state = models.CharField(

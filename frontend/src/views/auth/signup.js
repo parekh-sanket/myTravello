@@ -4,7 +4,8 @@ import { Link, Redirect } from "react-router-dom";
 import { useAuthContext } from "../../context/auth";
 import "../../css/auth.css";
 
-const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+// const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+const baseURL = "http://127.0.0.1:8000/api/";
 
 let initialState = {
     username: "",
@@ -30,6 +31,11 @@ const Signup = () => {
             [event.target.name]: event.target.value,
         });
     };
+
+    if(data.error !== null){ 
+        console.log("hello");
+        document.getElementsByTagName("html")[0].scrollTop = 0;
+    }
 
     const signupHandler = (e) => {
         e.preventDefault();
@@ -101,6 +107,9 @@ const Signup = () => {
                     <Redirect to="/" />
                 ) : (
                     <>
+                        <Link className="btn home-button" to="/">
+                            <div className="fas fa-home"></div>
+                        </Link>
                         <h1 className="heading">
                             <span>Sign Up</span>
                         </h1>
@@ -151,6 +160,7 @@ const Signup = () => {
                                             type="text"
                                             name="email"
                                             value={data.email}
+                                            placeholder="Enter your Email"
                                             required
                                             onChange={handleInputChange}
                                         />
@@ -161,6 +171,7 @@ const Signup = () => {
                                             type="text"
                                             name="phone_no"
                                             value={data.phone_no}
+                                            placeholder="Enter your Phone Number"
                                             required
                                             onChange={handleInputChange}
                                         />
@@ -171,6 +182,7 @@ const Signup = () => {
                                             type="password"
                                             name="password1"
                                             value={data.password1}
+                                            placeholder="Enter your Password"
                                             required
                                             onChange={handleInputChange}
                                         />
@@ -181,40 +193,44 @@ const Signup = () => {
                                             type="password"
                                             name="password2"
                                             value={data.password2}
+                                            placeholder="Enter again Password"
                                             required
                                             onChange={handleInputChange}
                                         />
                                     </div>
-                                    <input
-                                        type="checkbox"
-                                        name="isagent"
-                                        className="checkbox"
-                                        value="xyz"
-                                        onChange={(e) =>
-                                            setData({ ...data, isAgent: e.target.checked })
-                                        }
-                                    />
-                                    <span className="checkbox">Is Agent ?</span>
+                                    <div className="">
+                                        <input
+                                            type="checkbox"
+                                            name="isagent"
+                                            className="checkbox"
+                                            value="isAgent"
+                                            onChange={(e) =>
+                                                setData({ ...data, isAgent: e.target.checked })
+                                            }
+                                        />
+                                        <span className="checkbox">Is Agent ?</span>
+                                    </div>
                                 </div>
                                 <div className="input-box">
                                     <button
                                         type="button"
-                                        className="btn"
+                                        className="btn input-btn"
                                         value="Check Out"
                                         onClick={signupHandler}>
                                         {data.loading ? "Signing in..." : "Sign Up"}
                                     </button>
-                                    <hr />
-                                    <Link to="/login">
+                                    
+                                    {/* <Link to="/login">
                                         <button className="btn" type="button">
                                             Log In
                                         </button>
                                     </Link>
-                                    &nbsp;
-                                    <Link to="/">
-                                        <button className="btn" type="button">
-                                            Home
-                                        </button>
+                                    &nbsp; */}
+                                </div>
+                                <div className="singup-login">
+                                    <p>Already have account?</p>
+                                    <Link to="/login">
+                                        click here
                                     </Link>
                                 </div>
                             </form>

@@ -80,6 +80,7 @@ const Footer = () => {
 
             <div className="credit">
                  All rights reserved.
+                 Created by Sanket Parekh
             </div>
         </section>
     );

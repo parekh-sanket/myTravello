@@ -4,12 +4,13 @@ import { Link, Redirect } from "react-router-dom";
 import { useAuthContext } from "../../context/auth";
 import "../../css/auth.css";
 
-const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+// const baseURL = "https://mytravelloo-backend.herokuapp.com/api/v1/";
+const baseURL = "http://127.0.0.1:8000/api/";
 
 const initialState = {
     email: "",
     password: "",
-    isAgent: false,
+    // isAgent: false,
     error: null,
     loading: false,
 };
@@ -47,7 +48,7 @@ const Login = () => {
             .post(baseURL + "login/", {
                 email: data.email,
                 password: data.password,
-                isAgent: data.isAgent,
+                // isAgent: data.isAgent,
             })
             .then((res) => {
                 setData({
@@ -78,6 +79,9 @@ const Login = () => {
                     <Redirect to="/" />
                 ) : (
                     <>
+                        <Link className="btn home-button" to="/">
+                            <div className="fas fa-home"></div>
+                        </Link>
                         <h1 className="heading">
                             <span> Login</span>
                         </h1>
@@ -106,11 +110,12 @@ const Login = () => {
                                             type="password"
                                             name="password"
                                             value={data.password}
+                                            placeholder="Enter your Password"
                                             required
                                             onChange={handleInputChange}
                                         />
                                     </div>
-                                    <input
+                                    {/* <input
                                         type="checkbox"
                                         name="isagent"
                                         className="checkbox"
@@ -119,27 +124,21 @@ const Login = () => {
                                             setData({ ...data, isAgent: e.target.checked })
                                         }
                                     />
-                                    <span className="checkbox">Is Agent ?</span>
+                                    <span className="checkbox">Is Agent ?</span> */}
                                 </div>
                                 <div className="input-box">
                                     <button
                                         type="button"
-                                        className="btn"
+                                        className="btn input-btn"
                                         value="Check Out"
                                         onClick={loginHandler}>
                                         {data.loading ? "Logging in..." : "Log In"}
                                     </button>
-                                    <hr />
+                                </div>
+                                <div className="singup-login">
+                                    <p>Not have account?</p>
                                     <Link to="/signup">
-                                        <button className="btn" type="button">
-                                            Sign Up
-                                        </button>
-                                    </Link>
-                                    &nbsp;
-                                    <Link to="/">
-                                        <button className="btn" type="button">
-                                            Home
-                                        </button>
+                                        click here
                                     </Link>
                                 </div>
                             </form>

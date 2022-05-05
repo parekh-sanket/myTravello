@@ -5,11 +5,13 @@ import { useCrudContext } from "../context/crud";
 const DestinationPackage = (props) => {
     const { state: crudState, get_destination_list } = useCrudContext();
     const state_name = props.match.params.state__name;
+    
 
     var distinct_list = [
-        ...new Map(crudState.destination_list.map((item) => [item["name"], item])).values(),
+        ...new Map(crudState.destination_list.map((item) => [item["name"], item] )).values(),
     ];
 
+    console.log(distinct_list);
     useEffect(() => {
         get_destination_list(state_name);
     }, []);

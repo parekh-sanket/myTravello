@@ -88,9 +88,9 @@ const Tripdetails = (props) => {
     return (
         <div className="container">
             <div className="travellors" id="travellors">
-            <Link className="btn home-button" to="/">
-                <div className="fas fa-home"></div>
-            </Link>
+                <Link className="btn home-button" to="/">
+                    <div className="fas fa-home"></div>
+                </Link>
                 <h1 className="heading">
                     Travellors' <span>Details</span>
                 </h1>
@@ -98,7 +98,7 @@ const Tripdetails = (props) => {
                 <div className="content">
                     <form action="#">
                         <div className="user-details">
-                            {nameData.map((e, index) => (
+                            {nameData.map((data, index) => (
                                 <div className="input-box" key={index}>
                                     <span className="details">Full Name</span>
                                     <input
@@ -201,11 +201,15 @@ const Tripdetails = (props) => {
                             <div className="input-box">
                                 <span className="details">Date</span>
                                 <input
-                                    type="date"
+                                    type="text"
                                     name="date"
+                                    placeholder="DD/MM/YYYY"
+                                    onFocus={(e)=>e.target.type='date'}
+                                    onBlur={(e)=>e.target.type='text'}
                                     required
                                     onChange={handleInputChange}
                                 />
+                                
                             </div>
                             <div className="input-box">
                                 <button

@@ -1,14 +1,16 @@
 import io
 import datetime
 import uuid
+import json
 from django.core.mail import send_mail
 from django.conf import settings
+from matplotlib.font_manager import json_dump
 from rest_framework.parsers import JSONParser
-from django.http import JsonResponse
+from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from mytravelloo.models import User, Trip, Destination, Payment, Agent
 from .serializers import CustomerRegisterSerializer, AgentRegisterSerializer, DestinationListSerializer, DestinationSerializer, TripSerializer
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password,make_password 
 
 # JWT Auth
 import jwt
@@ -31,17 +33,17 @@ def check_token(request):
         encoded = encoded['token']["token"]
         decoded = jwt.decode(encoded, SECRET_KEY, algorithms=["HS256"])
         return JsonResponse({"user": decoded})
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+
 
 # Generate Token
-
-
 dt = datetime.datetime.now() + datetime.timedelta(days=2)
 
 
 def get_token(id, isAgent, username):
-    encoded = jwt.encode({"id": id, "isAgent": isAgent,
-                         "username": username, "exp": dt}, SECRET_KEY, algorithm="HS256")
+    encoded = jwt.encode({"id": id, "isAgent": isAgent,"username": username, "exp": dt}, SECRET_KEY, algorithm="HS256").decode('utf-8')
     return encoded
+
 
 
 @csrf_exempt
@@ -88,6 +90,8 @@ def signupView(request):
             return JsonResponse(res)
 
         return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+    
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
 
 
 @csrf_exempt
@@ -98,6 +102,7 @@ def loginView(request):
         email = parsed_data["email"]
         password = parsed_data["password"]
 
+        
         user = None
         try:
             user = User.objects.get(email=email)
@@ -109,6 +114,7 @@ def loginView(request):
             return JsonResponse({'msg': "User Not Exists !"}, status=403)
 
         if not check_password(password, user.password):
+            # print(make_password("sanket03"))
             return JsonResponse({'msg': "Wrong Password !"}, status=403)
 
         token = get_token(user.id, user.isAgent, user.username)
@@ -120,6 +126,7 @@ def loginView(request):
             "username": user.username,
             "exp": dt
         }
+        
         return JsonResponse(res)
 
     return JsonResponse({'msg': "Some Error Occured !"}, status=403)
@@ -147,6 +154,9 @@ def destinationGroup(request):
 
             return JsonResponse({"data": data})
         return JsonResponse({"msg": "Some Error Occurred ! Please refresh the page."}, status=403)
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+
+
 
 
 @csrf_exempt
@@ -156,10 +166,11 @@ def destinationList(request):
         state_destinations = Destination.objects.filter(
             state=state_name['state'])
         state_destinations = DestinationListSerializer(
-            state_destinations, many=True, partial=True).data
+            state_destinations, many=True).data
         if state_destinations is not None:
             return JsonResponse({"state": state_destinations})
         return JsonResponse({"msg": "Some Error Occurred ! Please refresh the page."}, status=403)
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
 
 
 def destination(request, id):
@@ -169,6 +180,8 @@ def destination(request, id):
         if get_dest_serialize is not None:
             return JsonResponse({"destination": get_dest_serialize})
         return JsonResponse({"msg": "Some Error Occurred ! Please refresh the page."}, status=403)
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+    
 
 
 @csrf_exempt
@@ -186,6 +199,9 @@ def date_checking(request):
             return JsonResponse({"msg": "Invalid Date"})
         else:
             return JsonResponse({"msg": "Available"})
+        
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+    
 
 
 @csrf_exempt
@@ -234,6 +250,8 @@ def payment_checking(request):
 
         else:
             return JsonResponse({"msg": "Payment Failed"}, status=403)
+    return JsonResponse({'msg': "Some Error Occured !"}, status=403)
+    
 
 
 @csrf_exempt

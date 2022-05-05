@@ -4,8 +4,14 @@ import { ReactComponent as ContactImage } from "../images/contact.svg";
 const Contact = () => {
     return (
         <section className="contact" id="contact">
-            <h1 className="heading">
-                <span>Contact</span> Us
+            <h1 class="top-heading">
+                <span> C </span>
+                <span> O </span>
+                <span> N </span>
+                <span> T </span>
+                <span> A </span>
+                <span> C </span>
+                <span> T </span>
             </h1>
 
             <form action="" data-aos="zoom">

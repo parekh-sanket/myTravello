@@ -19,12 +19,14 @@
     width: 100%;
     margin-bottom: 15px;
 }
+
 .auth form .input-box span.details {
     display: inline-block;
     font-weight: 500;
     margin-bottom: 5px;
     font-size: 1.4rem;
 }
+
 .auth .auth-details .input-box input {
     height: 45px;
     width: 100%;
@@ -36,6 +38,7 @@
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
+
 .auth .auth-details .input-box input:focus,
 .auth .auth-details .input-box input:valid {
     border-color: #9b59b6;
@@ -43,7 +46,8 @@
 
 .auth .auth-details .checkbox {
     display: inline;
-    height: 20px;
+    height: 17px;
+    vertical-align: middle;
     width: 20px;
     font-size: 2.2rem;
     padding: 0;
@@ -55,28 +59,52 @@
     font-weight: 500;
     height: 20px;
     width: 80px;
-    font-size: 1.4rem;
+    padding-left: 0.3rem;
+    font-size: 1.5rem;
+}
+
+.singup-login {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.singup>p {
+    padding-left: .3rem;
+}
+
+.input-box .input-btn {
+    width: 97%;
+    height: auto;
+    border-radius: 0.7rem;
 }
 
 @media (max-width: 584px) {
     .auth {
         max-width: 100%;
     }
+
     .auth form .auth-details .input-box {
         margin-bottom: 15px;
         width: 100%;
     }
+
     .auth form .category {
         width: 100%;
     }
+
     .auth .content form .auth-details {
         max-height: 300px;
         overflow-y: scroll;
     }
+
     .auth .auth-details::-webkit-scrollbar {
         width: 5px;
     }
 }
+
 @media (max-width: 459px) {
     .auth .content .category {
         flex-direction: column;

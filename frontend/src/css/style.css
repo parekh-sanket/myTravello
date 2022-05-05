@@ -7,12 +7,13 @@
     --text-color-2: #666;
     --bg-color-1: #fff;
     --bg-color-2: #eee;
+    /* --orange:#ffa500; */
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
 * {
     font-family: "Poppins", sans-serif;
-    /* font-family: "Source Sans Pro", sans-serif; */
+    font-family: "Source Sans Pro", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -63,10 +64,30 @@ section {
     padding: 2rem 7%;
 }
 
+.top-heading {
+    text-align: center;
+    padding: 2.5rem 0
+}
+
+.top-heading span {
+    font-size: 3.5rem;
+    background: rgba(255, 165, 0, .2);
+    color: var(--pink);
+    border-radius: .5rem;
+    padding: .1rem 1rem;
+    margin: .2rem;
+}
+
+.top-heading span.space {
+    background: none;
+}
+
 .heading {
     text-align: center;
-    padding-bottom: 2rem;
-    color: var(--text-color-1);
+    background: rgba(255, 165, 0, .2);
+    padding: .1rem 1rem;
+    border-radius: .5rem;
+    color: var(--pink);
     font-size: 4rem;
     margin: 10px;
 }
@@ -74,18 +95,6 @@ section {
 .heading span {
     position: relative;
     z-index: 0;
-}
-
-.heading span::before {
-    content: "";
-    position: absolute;
-    bottom: 1rem;
-    left: 0;
-    z-index: -1;
-    background: var(--pink);
-    height: 100%;
-    width: 100%;
-    clip-path: polygon(0 90%, 100% 86%, 100% 100%, 0% 100%);
 }
 
 .btn {
@@ -541,6 +550,7 @@ a {
     font-weight: 500;
     position: relative;
 }
+
 .travellors .title::before {
     content: "";
     position: absolute;
@@ -566,12 +576,14 @@ a {
     margin-bottom: 15px;
     width: 100%;
 }
+
 .travellors form .input-box span.details {
     display: inline-block;
     font-weight: 500;
     margin-bottom: 5px;
     font-size: 1.4rem;
 }
+
 .travellors .user-details .input-box input {
     height: 45px;
     width: 100%;
@@ -583,6 +595,7 @@ a {
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
+
 .travellors .user-details .input-box input:focus,
 .travellors .user-details .input-box input:valid {
     border-color: #9b59b6;
@@ -592,21 +605,26 @@ a {
     .travellors {
         max-width: 100%;
     }
+
     .travellors form .user-details .input-box {
         margin-bottom: 15px;
         width: 100%;
     }
+
     .travellors form .category {
         width: 100%;
     }
+
     .travellors .content form .user-details {
         max-height: 300px;
         overflow-y: scroll;
     }
+
     .travellors .user-details::-webkit-scrollbar {
         width: 5px;
     }
 }
+
 @media (max-width: 459px) {
     .travellors .content .category {
         flex-direction: column;
@@ -624,11 +642,13 @@ a {
     box-shadow: var(--box-shadow);
     margin: 20px auto;
 }
+
 .payment .title {
     font-size: 25px;
     font-weight: 500;
     position: relative;
 }
+
 .payment .title::before {
     content: "";
     position: absolute;
@@ -639,6 +659,7 @@ a {
     border-radius: 5px;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
+
 .payment .content form .card-details {
     display: flex;
     flex-direction: column;
@@ -650,12 +671,14 @@ a {
     margin-bottom: 15px;
     width: 100%;
 }
+
 .payment form .input-box span.details {
     display: inline-block;
     font-weight: 500;
     margin-bottom: 5px;
     font-size: 1.4rem;
 }
+
 .payment .card-details .input-box input {
     height: 45px;
     width: 100%;
@@ -667,6 +690,7 @@ a {
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
+
 .payment .card-details .input-box input:focus,
 .payment .card-details .input-box input:valid {
     border-color: #9b59b6;
@@ -676,21 +700,26 @@ a {
     .payment {
         max-width: 100%;
     }
+
     .payment form .card-details .input-box {
         margin-bottom: 15px;
         width: 100%;
     }
+
     .payment form .category {
         width: 100%;
     }
+
     .payment .content form .card-details {
         max-height: 300px;
         overflow-y: scroll;
     }
+
     .payment .card-details::-webkit-scrollbar {
         width: 5px;
     }
 }
+
 @media (max-width: 459px) {
     .payment .content .category {
         flex-direction: column;
@@ -814,7 +843,7 @@ a {
 
     .intro .content {
         text-align: center;
-    }
+    }   
 
     .destination .details .about {
         width: 50%;

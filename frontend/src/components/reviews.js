@@ -6,8 +6,14 @@ import "swiper/swiper.min.css";
 const Reviews = () => {
     return (
         <section className="review" id="review">
-            <h1 className="heading">
-                Client's <span>Reviews</span>
+            <h1 class="top-heading">
+                <span> R </span>
+                <span> E </span>
+                <span> V </span>
+                <span> I </span>
+                <span> E </span>
+                <span> W </span>
+                <span> S </span>
             </h1>
             <Swiper centeredSlides loop spaceBetween={50} className="review-slider">
                 <SwiperSlide className="slide">
