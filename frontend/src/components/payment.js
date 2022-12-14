@@ -49,10 +49,10 @@ const Payment = () => {
 
         check_payment(data, tripDetails);
 
-        !crudState.isFetching &&
-            setInterval(() => {
-                window.location.href = "/";
-            }, 12000);
+        // !crudState.isFetching &&
+        //     setInterval(() => {
+        //         window.location.href = "/";
+        //     }, 12000);
     };
 
     return (
